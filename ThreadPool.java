@@ -1,12 +1,5 @@
-package il.co.ilrd.threadpool;
-
 import java.util.concurrent.*;
 import il.co.ilrd.waitable_pqueue.WaitablePriorityQueue;
-
-/*Developer: Itay Adi Yosef
- * Reviewer: Ori Komemi
- * Date: November 24th
- */
 
 public class ThreadPool implements Executor {
 	private WaitablePriorityQueue<Task<?>> wpq = new WaitablePriorityQueue<>(1024);
@@ -248,17 +241,6 @@ public class ThreadPool implements Executor {
 		}
 	}
 	
-	/*private enum InnerPriority{
-		MIN(5),
-		MAX(1);
-		
-		private final int InnerPriority;
-		
-		private InnerPriority(int InnerPriority) {
-			this.InnerPriority = InnerPriority;
-		}
-	}*/
-
 	public enum Priority{
 
 		MIN(5),
