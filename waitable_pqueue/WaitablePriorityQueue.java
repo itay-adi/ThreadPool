@@ -1,10 +1,3 @@
-package il.co.ilrd.waitable_pqueue;
-
-/*Developer: Itay Adi Yosef
- * Date: Nov 20th
- * Reviewer: Max Kemel 
- */
-
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.concurrent.Semaphore;
@@ -16,6 +9,8 @@ public class WaitablePriorityQueue<E>{
 	private Lock pqLock = new ReentrantLock(true);
 	private Semaphore fillCount; //count the elements left to fill
 	private Semaphore emptyCount; //count the elements left to remove
+	
+	/***************************************************************************/
 
 	//constructor1
 	public WaitablePriorityQueue(int capacity) {
@@ -27,11 +22,15 @@ public class WaitablePriorityQueue<E>{
 		pQueue = new PriorityQueue<>(capacity, cmptor);
 		semInit(capacity);
 	}
+	
+	/***************************************************************************/
 
 	private void semInit(int capacity) {
 		emptyCount = new Semaphore(0);
 		fillCount = new Semaphore(capacity);
 	}
+	
+	/***************************************************************************/
 
 	public void enqueue(E item){
 		try {
